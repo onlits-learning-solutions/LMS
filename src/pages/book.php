@@ -33,15 +33,15 @@ $books = $bookob->index();
         <table class='content-table'>
             <thead>
             <tr>
-                <th>id</th>
-                <th>title</th>
-                <th>edition</th>
-                <th>author</th>
-                <th>publication</th>
-                <th>isbn10</th>
-                <th>isbn13</th>
-                <th>pages</th>
-                <th>price</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Edition</th>
+                <th>Author</th>
+                <th>Publication</th>
+                <th>Isbn10</th>
+                <th>Isbn13</th>
+                <th>Pages</th>
+                <th>Price</th>
                 
 
             </tr>

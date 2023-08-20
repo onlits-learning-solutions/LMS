@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    header('location:index?status=199');
+}
+$user_id = $_SESSION['user_id'];
 use LMS\src\models\Book;
 
 require '../autoload.php';
