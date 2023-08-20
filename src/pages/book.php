@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['user_id'])){
+    header('location:index?status=199');
+}
+$user_id = $_SESSION['user_id'];
 require '../autoload.php';
 
 use LMS\src\models\Book;
@@ -26,7 +30,8 @@ $books = $bookob->index();
  
          <main class="grid-2">
          
-        <table>
+        <table class='content-table'>
+            <thead>
             <tr>
                 <th>id</th>
                 <th>title</th>
@@ -40,8 +45,10 @@ $books = $bookob->index();
                 
 
             </tr>
+            </thead>
             <?php foreach ($books as $book) { ?>
-                <tr>
+                <tbody>
+                <tr  >
                     <td>
                         <?= $book['id'] ?>
                     </td>
@@ -69,9 +76,13 @@ $books = $bookob->index();
                     <td>
                         <?= $book['price'] ?>
                     </td>
+                    <div class='edit'>
                     <td><a href="edit-book.php?id=<?= $book['id'] ?>">Edit</a></td>
-                            <td><a href="delete-book.php?id=<?= $book['id'] ?>">Delete</a></td>
+                         
+                    <td><a href="delete-book.php?id=<?= $book['id'] ?>">Delete</a></td>
+                    </div>
                 </tr>
+                </tbody>
             <?php }
     ?> </main>
     </table>

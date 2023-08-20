@@ -1,10 +1,4 @@
-<?php
-session_start();
-if(!isset($_SESSION['user_id'])){
-    header('location:index?status=199');
-}
-$user_id = $_SESSION['user_id'];
-?>
+
 
 
 <!DOCTYPE html>
@@ -20,7 +14,8 @@ $user_id = $_SESSION['user_id'];
      <a href="#" class="brand-logo">Logo</a>
     </div>  
 <div class='topnav'>
-    
+
+<a href="../logout.php">Logout</a>
    <a class='active'>Welcome <?= $user_id?></a>
     
  

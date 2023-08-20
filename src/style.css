@@ -37,10 +37,10 @@ aside {
 
 aside a {
     display: block;
-    width: 60px;
+    width: 80%;
     margin-bottom: 5px;
     color: #000;
-    padding: 8px 16px;
+    padding: 10px 16px;
     text-decoration: none;
 }
 
@@ -58,7 +58,7 @@ main a {
     margin-bottom: 50px;
     width: 60px;
     color: #000;
-    padding: 8px 16px;
+    padding: 3px 20px;
     text-decoration: black;
    
     
@@ -70,12 +70,57 @@ main a:hover{
     color: white;
 }
 
-table, th, td {
-    border: 2px solid #000;
-    margin-top: 10px;
+
+
+.content-table {
     border-collapse: collapse;
-    
-  }
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px; 
+    border-radius: 5px 5px 0 0;
+    }
+
+    .content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+    }
+    .content-table th,
+    .content-table td {
+    padding: 12px 15px;
+    }
+
+    .content-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+        } I
+      
+        .content-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.edit {
+    border:none;
+}
 
   body {
     margin: 0px;

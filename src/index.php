@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 
     header('location:pages/book.php');
      } else
-    header('location:index.php');
+    header('location:index.php?status=99');
 }
 
 if(isset($_GET['status'])) {
