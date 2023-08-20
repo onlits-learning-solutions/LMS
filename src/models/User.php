@@ -2,8 +2,6 @@
 
 namespace LMS\src\models\user;
 
-require 'env.php';
-
 class user
 {
     private $connection =null;

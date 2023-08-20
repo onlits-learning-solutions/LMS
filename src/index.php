@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
 
 if(isset($_GET['status'])) {
     if($_GET['status'] == '99') {
-        $error_message = "INvalid user_id or password";
+        $error_message = "Invalid user_id or password";
     } elseif ($_GET['status'] == '199') {
         $error_message = "Invalid session! Please login to continue";
     }
