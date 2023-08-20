@@ -2,6 +2,7 @@
 <?php
 use LMS\src\models\user\user;
 require 'models\User.php';
+require './env.php';
 
 
 $userob = new user();
@@ -14,7 +15,7 @@ if(isset($_POST['submit'])){
 
     header('location:pages/book.php');
      } else
-    header('location:index.php?status=99');
+    header('location:index.php');
 }
 
 if(isset($_GET['status'])) {

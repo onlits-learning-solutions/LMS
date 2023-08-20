@@ -1,0 +1,1 @@
+<a href="new-book.php">ADD New Book</a>

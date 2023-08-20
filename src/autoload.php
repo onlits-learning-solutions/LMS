@@ -4,3 +4,4 @@ require __DIR__ . '/models/Book.php';
 require __DIR__ . '/models/Member.php';
 require __DIR__ . '/models/Transaction.php';
 require __DIR__ . '/models/User.php';
+require __DIR__ . '/navbar.php';

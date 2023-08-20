@@ -13,27 +13,31 @@ $books = $bookob->index();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>Books</title>
 </head>
 
 <body>
-    <?php
-    if ($books == null)
-        echo "No Book found!";
-    else {
-        ?>
+   
+    <div class="grid-container">
+     <aside>
+     <?php require('../sidebar.php') ?>
+ </aside>
+ 
+         <main class="grid-2">
+         
         <table>
             <tr>
                 <th>id</th>
                 <th>title</th>
-                <th>edtion</th>
-                <th>auther</th>
+                <th>edition</th>
+                <th>author</th>
                 <th>publication</th>
                 <th>isbn10</th>
                 <th>isbn13</th>
                 <th>pages</th>
                 <th>price</th>
-                <th>cover</th>
+                
 
             </tr>
             <?php foreach ($books as $book) { ?>
@@ -45,10 +49,10 @@ $books = $bookob->index();
                         <?= $book['title'] ?>
                     </td>
                     <td>
-                        <?= $book['edtion'] ?>
+                        <?= $book['edition'] ?>
                     </td>
                     <td>
-                        <?= $book['auther'] ?>
+                        <?= $book['author'] ?>
                     </td>
                     <td>
                         <?= $book['publication'] ?>
@@ -65,13 +69,13 @@ $books = $bookob->index();
                     <td>
                         <?= $book['price'] ?>
                     </td>
-                    <td>
-                        <?= $book['cover'] ?>sss
-                    </td>
+                    <td><a href="edit-book.php?id=<?= $book['id'] ?>">Edit</a></td>
+                            <td><a href="delete-book.php?id=<?= $book['id'] ?>">Delete</a></td>
                 </tr>
             <?php }
-    } ?>
+    ?> </main>
     </table>
+    </div>
 </body>
 
 </html>

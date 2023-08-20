@@ -31,30 +31,37 @@ class Book
             return null;
     }
 
-    /* public function create($library)
+    public function create($book)
      {
-         $library_name =$library['library_name'];
-         $address =$library['address'];
-         $city =$library['city'];
-         $state =$library['state'];
-         $contact_person =$library['contact_person'];
-         $contact_no =$library['contact_no'];
+         $id =$book['id'];
+         $title =$book['title'];
+         $edition =$book['edition'];
+         $author =$book['author'];
+         $publication =$book['publication'];
+         $isbn10 =$book['isbn10'];
+         $isbn13 =$book['isbn13'];
+         $pages =$book['pages'];
+         $price =$book['price'];
      
 
-         $sql = "INSERT INTO book(library_name,address,city,state,contact_person, contact_no,Email,Website,registration_no,pan_no,GST_no,Bank_name,Account_no,IFSC_code,UPI_ID) VALUES('$library_name', '$address','$city','$state','$contact_person','$contact_no','$Email','$Website','$registration_no','$pan_no','$GST_no','$Bank_name','$Account_no','$IFSC_code','$UPI_ID')";
+         $sql = "INSERT INTO book(id, title, edition, author, publication, isbn10, isbn13, pages, price) VALUES('$id', '$title','$edition','$author','$publication','$isbn10','$isbn13','$pages','$price')";
          $this->connection->query($sql);
-         header("location:library.php");
+         header("location:book.php");
      }
 
      public function update($book)
      {
-         $id = $book['id'];
-         $first_name = $book['first_name'];
-         $middle_name = $book['middle_name'];
-         $last_name = $book['last_name'];
-         $contact_no = $book['contact_no'];
+         $id =$book['id'];
+         $title =$book['title'];
+         $edition =$book['edition'];
+         $author =$book['author'];
+         $publication =$book['publication'];
+         $isbn10 =$book['isbn10'];
+         $isbn13 =$book['isbn13'];
+         $pages =$book['pages'];
+         $price =$book['price'];
 
-         $sql = "UPDATE book SET first_name='$first_name', middle_name='$middle_name', last_name='$last_name', contact_no='$contact_no' WHERE id=$id";
+         $sql = "UPDATE book SET id='$id', title='$title', edition='$edition', author='$author' , publication='$publication', isbn10='$isbn10', isbn13='$isbn13', pages='$pages', price='$price' WHERE id=$id";
          $this->connection->query($sql);
          header('location:book.php');
      }
@@ -71,7 +78,7 @@ class Book
          $sql = "SELECT COUNT(id) FROM book";
          $result = $this->connection->query($sql);
          return $result->fetch_array();
-     }*/
+     }
 
     public function __destruct()
     {
