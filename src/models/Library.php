@@ -56,29 +56,42 @@ class Library
         header("location:library-profile.php");
     }
 
-    public function update($student)
+    public function update($library)
     {
-        $id = $student['id'];
-        $first_name = $student['first_name'];
-        $middle_name = $student['middle_name'];
-        $last_name = $student['last_name'];
-        $contact_no = $student['contact_no'];
+       
+        $library_name = $library['library_name'];
+        $address = $library['address'];
+        $city = $library['city'];
+        $state = $library['state'];
+        $contact_person = $library['contact_person'];
+        $contact_no = $library['contact_no'];
+        $Email = $library['Email'];
+        $Website = $library['Website'];
+        $registration_no = $library['registration_no'];
+        $pan_no = $library['pan_no'];
+        $GST_no = $library['GST_no'];
+        $Bank_name = $library['Bank_name'];
+        $Account_no = $library['Account_no'];
+        $IFSC_code = $library['IFSC_code'];
+        $UPI_ID = $library['UPI_ID'];
+        
 
-        $sql = "UPDATE student SET first_name='$first_name', middle_name='$middle_name', last_name='$last_name', contact_no='$contact_no' WHERE id=$id";
+
+        $sql = "UPDATE library_profile SET library_name='$library_name', address='$address', city='$city', state='$state' contact_person='$contact_person' contact_no='$contact_no' Email='$Email' Website='$Website' registration_no='$registration_no' pan_no='$pan_no' GST_no='$GST_no' Bank_name='$Bank_name' Account_no='$Account_no' IFSC_code='$IFSC_code' UPI_ID='$UPI_ID'  WHERE library_name='$library_name";
         $this->connection->query($sql);
-        header('location:student.php');
+        header('location:library-profile.php');
     }
 
     public function delete(int $id)
     {
-        $sql = "DELETE FROM student WHERE id=$id";
+        $sql = "DELETE FROM library_profile WHERE id=$id";
         $this->connection->query($sql);
-        header("location:student.php");
+        header("location:library-profile.php");
     }
 
-    public function count_student()
+    public function count_library()
     {
-        $sql = "SELECT COUNT(id) FROM student";
+        $sql = "SELECT COUNT(id) FROM library";
         $result = $this->connection->query($sql);
         return $result->fetch_array();
     }
