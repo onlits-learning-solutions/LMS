@@ -1,6 +1,7 @@
 <?php
 
 use LMS\models\Member;
+
 require '../autoload.php';
 $members = Member::index();
 ?>
@@ -27,16 +28,59 @@ $members = Member::index();
                 <?php require 'sidebar.php' ?>
             </aside>
             <main class="main">
-                <div class="content">
-                    <!-- You content goes here!  -->
-                    <h1>Member</h1>
+                    <main class="grid-2">
+                        <a href="new-member.php">Add New Member</a>
+                        <table class='content-table'>
+                            <thead>
+                                <tr>
+                                    <th>Member ID</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <?php foreach ((array) $members as $member) { ?>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <?= $member['member_id'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $member['name'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $member['gender'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $member['date_of_birth'] ?>
+                                        </td>
+
+                                        <div class='edit'>
+                                            <td><a href="edit-member.php?member_id=<?= $member['member_id'] ?>">Edit</a></td>
+
+                                            <td><a href="delete-member.php?member_id=<?= $member['member_id'] ?>">Delete</a></td>
+                                        </div>
+                                    </tr>
+                                </tbody>
+                            <?php }
+                            ?>
+                        </table> 
+                    </main>
+                
                 </div>
-                <footer class="footer">
-                    <?php require 'footer.php' ?>
-                </footer>
+
             </main>
+
         </div>
     </div>
+<footer class="footer">
+                    <?php require 'footer.php' ?>
+                </footer>
+    </div>
+    
 </body>
 
 </html>

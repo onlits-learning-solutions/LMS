@@ -1,11 +1,10 @@
 <?php
-
+use LMS\models\Library;
 require '../autoload.php';
 
-use LMS\src\models\library\Library;
 
-$libraryob = new Library();
-$librarys = $libraryob->index();
+
+$librarys =Library::index();
 
 
 ?>
@@ -29,96 +28,136 @@ $librarys = $libraryob->index();
             <aside class="sidenav">
                 <?php require 'sidebar.php' ?>
             </aside>
-          
-                <main >
+
+            <main>
+                <ul class="profile-list">
+                    <li class="profile-item">
+                        <div class="profile-field">
+                            <?php foreach ($librarys as $library) ?>
+                            <span class="field-label">Library Name:</span>
+                            <span class="field-value">
+                                <?= $library['library_name'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Address:</span>
+                            <span class="field-value">
+                                <?= $library['address'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">city:</span>
+                            <span class="field-value">
+                                <?= $library['city'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">state:</span>
+                            <span class="field-value">
+                                <?= $library['state'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">contact_person:</span>
+                            <span class="field-value">
+                                <?= $library['contact_person'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">contact_no:</span>
+                            <span class="field-value">
+                                <?= $library['contact_no'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Email:</span>
+                            <span class="field-value">
+                                <?= $library['Email'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Website:</span>
+                            <span class="field-value">
+                                <?= $library['Website'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">registration_no:</span>
+                            <span class="field-value">
+                                <?= $library['registration_no'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">pan_no:</span>
+                            <span class="field-value">
+                                <?= $library['pan_no'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">GST_no:</span>
+                            <span class="field-value">
+                                <?= $library['GST_no'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Bank_name:</span>
+                            <span class="field-value">
+                                <?= $library['Bank_name'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Account_no:</span>
+                            <span class="field-value">
+                                <?= $library['Account_no'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">IFSC_code:</span>
+                            <span class="field-value">
+                                <?= $library['IFSC_code'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">UPI_ID:</span>
+                            <span class="field-value">
+                                <?= $library['UPI_ID'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">city:</span>
+                            <span class="field-value">
+                                <?= $library['city'] ?>
+                            </span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">library_id:</span>
+                            <span class="field-value">
+                                <?= $library['library_id'] ?>
+                            </span>
+                        </div>
 
 
-                    <table class='profile-table'>
-                        <thead>
-                            <tr>
-                                <th>library_name</th>
-                                <th>address</th>
-                                <th>city</th>
-                                <th>state</th>
-                                <th>contact_person</th>
-                                <th>contact_no</th>
-                                <th>Email</th>
-                                <th>Website</th>
-                                <th>registration_no</th>
-                                <th>pan_no</th>
-                                <th>GST_no</th>
-                                <th>Bank_name</th>
-                                <th>Account_no</th>
-                                <th>IFSC_code</th>
-                                <th>UPI_ID </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <?php foreach ($librarys as $library) { ?>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <?= $library['library_name'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['address'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['city'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['state'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['contact_person'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['contact_no'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['Email'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['Website'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['registration_no'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['pan_no'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['GST_no'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['Bank_name'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['Account_no'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['IFSC_code'] ?>
-                                    </td>
-                                    <td>
-                                        <?= $library['UPI_ID'] ?>
-                                    </td>
-                                    <div class='edit'>
-                                        <td><a href="edit-profile.php?id=<?= $library['$registration_no'] ?>">Edit</a></td>
 
-                                        <td><a href="delete-profile.php?id=<?= $library['$registration_no'] ?>">Delete</a></td>
-                                    </div>
+                        <div class="form-actions">
+                            <td><a href="edit-profile.php?library_id=<?= $library['library_id'] ?>">Edit</a></td>
 
-                                </tr>
-                            </tbody>
-                        <?php } ?>
-                    </table>
+                            <td><a href="delete-member.php?library_id=<?= $library['library_id'] ?>">Delete</a></td>
+                        </div>
 
-                </main>
-          
-            <footer class="footer">
-                <?php require 'footer.php' ?>
-            </footer>
+                        </tr>
+                        </tbody>
+                    </li>
+
+                </ul>
+                </table>
+                </form>
         </div>
+        </main>
+
+        <footer class="footer">
+            <?php require 'footer.php' ?>
+        </footer>
+    </div>
     </div>
 
 
