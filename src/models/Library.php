@@ -1,39 +1,45 @@
 <?php
 
-namespace LMS\src\models\library;
+namespace LMS\models;
 
 
+use mysqli;
 
 class Library
 {
-    private $connection = null;
+    private mysqli $connection;
 
     public function __construct()
     {
-        $this->connection = new \mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $this->connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     }
 
-    public function index()
+    public static function index()
     {
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM library_profile";
-        $result = $this->connection->query($sql);
+        $result = $connection->query($sql);
         if($result->num_rows > 0)
             return $result->fetch_all(MYSQLI_ASSOC);
         
         return null;
     }
 
-    public function details(int $id)
+    
+    
+    
+    public function details(int $library_id)
     {
-        $sql = "SELECT * FROM library_profile WHERE id=$id";
-        $result = $this->connection->query($sql);
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $sql = "SELECT * FROM library_profile WHERE library_id = $library_id";
+        $result = $connection->query($sql);
         if($result->num_rows > 0)
             return $result->fetch_assoc();
         
         return null;
     }
 
-    public function create($library)
+    public function save($library)
     {
         $library_name =$library['library_name'];
         $address =$library['address'];
@@ -50,9 +56,11 @@ class Library
         $Account_no =$library['Account_no'];
         $IFSC_code = $library['IFSC_code'];
         $UPI_ID = $library['UPI_ID'];
+        $library_id = $library['library_id'];
 
-        $sql = "INSERT INTO library_profile(library_name,address,city,state,contact_person, contact_no,Email,Website,registration_no,pan_no,GST_no,Bank_name,Account_no,IFSC_code,UPI_ID) VALUES('$library_name', '$address','$city','$state','$contact_person','$contact_no','$Email','$Website','$registration_no','$pan_no','$GST_no','$Bank_name','$Account_no','$IFSC_code','$UPI_ID')";
-        $this->connection->query($sql);
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $sql = "INSERT INTO library_profile(library_name,address,city,state,contact_person, contact_no,Email,Website,registration_no,pan_no,GST_no,Bank_name,Account_no,IFSC_code,UPI_ID,library_id) VALUES('$library_name', '$address','$city','$state','$contact_person','$contact_no','$Email','$Website','$registration_no','$pan_no','$GST_no','$Bank_name','$Account_no','$IFSC_code','$UPI_ID','$library_id')";
+        $connection->query($sql);
         header("location:library-profile.php");
     }
 
@@ -74,18 +82,19 @@ class Library
         $Account_no = $library['Account_no'];
         $IFSC_code = $library['IFSC_code'];
         $UPI_ID = $library['UPI_ID'];
-        
+        $library_id = $library['library_id'];
 
-
-        $sql = "UPDATE library_profile SET library_name='$library_name', address='$address', city='$city', state='$state' contact_person='$contact_person' contact_no='$contact_no' Email='$Email' Website='$Website' registration_no='$registration_no' pan_no='$pan_no' GST_no='$GST_no' Bank_name='$Bank_name' Account_no='$Account_no' IFSC_code='$IFSC_code' UPI_ID='$UPI_ID'  WHERE library_name='$library_name";
-        $this->connection->query($sql);
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $sql = "UPDATE library_profile SET library_name='$library_name', address='$address', city='$city', state='$state' ,contact_person='$contact_person' ,contact_no='$contact_no', Email='$Email', Website='$Website', registration_no='$registration_no', pan_no='$pan_no' ,GST_no='$GST_no' ,Bank_name='$Bank_name' ,Account_no='$Account_no' ,IFSC_code='$IFSC_code' ,UPI_ID='$UPI_ID' ,library_id='$library_id' WHERE library_id='$library_id'";
+        $connection->query($sql);
         header('location:library-profile.php');
     }
 
-    public function delete(int $id)
+    public function delete(int $library_id)
     {
-        $sql = "DELETE FROM library_profile WHERE id=$id";
-        $this->connection->query($sql);
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $sql = "DELETE FROM library_profile WHERE library_id=$library_id";
+        $connection->query($sql);
         header("location:library-profile.php");
     }
 
