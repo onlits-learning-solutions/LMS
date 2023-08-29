@@ -35,7 +35,7 @@ class Book
             return null;
     }
 
-    public function details(int $id)
+    public static function details(int $id)
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM book  WHERE id=$id ";

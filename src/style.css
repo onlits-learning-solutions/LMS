@@ -208,3 +208,11 @@ I .content-table tbody tr:last-of-type {
 .profile-actions a:last-child {
     margin-right: 0;
 }
+
+/* --------------------------- Form ----------------------------- */
+
+.form-col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}

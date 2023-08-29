@@ -9,8 +9,7 @@ if (isset($_POST['submit'])) {
     $bookob = new Book();
     $book = $bookob->update($_POST);
 } else {
-    $bookob = new Book();
-    $book = $bookob->details($_GET['id']);
+    $book = Book::details($_GET['id']);
 }
 
 ?>

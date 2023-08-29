@@ -18,15 +18,13 @@ class Transaction
 
     private mysqli $connection;
 
-    public function __construct(string $date, string $time, string $book_id, string $member_id, string $return_by_date, string $actual_return_date, string $fine)
+    public function __construct(array $transaction)
     {
-        $this->date = $date;
-        $this->time = $time;
-        $this->book_id = $book_id;
-        $this->member_id = $member_id;
-        $this->return_by_date = $return_by_date;
-        $this->actual_return_date = $actual_return_date;
-        $this->fine = $fine;
+        $this->date = date("Y-m-d");
+        $this->time = date("h:i:s");
+        $this->book_id = $transaction['book_id'];
+        $this->member_id = $transaction['member_id'];
+        $this->return_by_date = $transaction['return_by_date'];
         
         $this->connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     }
@@ -41,7 +39,7 @@ class Transaction
             return null;
     }
 
-    public function details(int $transaction_id)
+    public static function details(int $transaction_id)
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM transaction  WHERE transaction_id=$transaction_id ";
@@ -55,9 +53,35 @@ class Transaction
     public function save()
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-        $sql = "INSERT INTO transaction( date, time, book_id, member_id, return_by_date, actual_return_date, fine) VALUES( '$this->date','$this->time','$this->book_id','$this->member_id','$this->return_by_date','$this->actual_return_date','$this->fine')";
+        $sql = "INSERT INTO transaction( date, time, book_id, member_id, return_by_date) VALUES( '$this->date','$this->time','$this->book_id','$this->member_id','$this->return_by_date')";
         $connection->query($sql);
         header("location:transaction.php");
     }
+
+    public function update($transaction)
+     {
+         $transaction_id =$transaction['transaction_id'];
+         $date =$transaction['date'];
+         $time =$transaction['time'];
+         $date_of_birth =$transaction['date_of_birth'];
+         $book_id =$transaction['book_id'];
+         $member_id =$transaction['member_id'];
+         $return_by_date =$transaction['return_by_date'];
+         $actual_return_date =$transaction['actual_return_date'];
+         $fine =$transaction['fine'];
+
+         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+         $sql = "UPDATE member SET transaction_id='$transaction_id', name='$date', gender='$time', date_of_birth='$date_of_birth' , book_id='$book_id' , member_id='$member_id' , return_by_date='$return_by_date' , actual_return_date='$actual_return_date' , fine='$fine'  WHERE transaction_id=$transaction_id";
+         $connection->query($sql);
+         header('location:transaction.php');
+     }
+
+     public function delete(int $transaction_id)
+     {
+         $sql = "DELETE FROM member WHERE member_id=$transaction_id";
+         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+         $connection->query($sql);
+         header("location:transaction.php");
+     }
     
 }

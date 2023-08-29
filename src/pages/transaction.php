@@ -42,6 +42,8 @@ $transactions = Transaction::index();
                                 <th>actual_return_date</th>
                                 <th>fine</th>
                                 <th></th>
+                                <th></th>
+                                <th></th>
                                 
 
                             </tr>
@@ -74,7 +76,9 @@ $transactions = Transaction::index();
                                         <?= $transaction['fine'] ?>
                                     </td>
                                     <div class='edit'>
-                                        <td><a href="edit-book.php?id=<?= $book['id'] ?>">Edit</a></td>
+                                        <td><a href="edit-transaction.php?transaction_id=<?= $transaction['transaction_id'] ?>">Edit</a></td>
+                                        <td><a href="return.php?transaction_id=<?= $transaction['transaction_id'] ?>">Return</a></td>
+                                        <td><a href="delete-transaction.php?transaction_id=<?= $transaction['transaction_id'] ?>">Delete</a></td>
 
                                        
                                     </div>

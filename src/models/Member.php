@@ -27,7 +27,7 @@ class Member {
             return null;
     }
 
-    public function details(int $member_id)
+    public static function details(int $member_id)
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM member  WHERE member_id=$member_id ";
