@@ -209,6 +209,28 @@ I .content-table tbody tr:last-of-type {
     margin-right: 0;
 }
 
+/* ----------------------Dashboard--------------------------- */
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
 
+.card {
+    background-color: burlywood;
+    border-radius: 10px;
+}
 
+.card-title {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 10px;
+    min-height: 100px;
+}
 
