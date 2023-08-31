@@ -18,7 +18,7 @@ class Transaction
 
     private mysqli $connection;
 
-    public function __construct(array $transaction)
+    public function __construct($transaction)
     {
         $this->date = date("Y-m-d");
         $this->time = date("h:i:s");
