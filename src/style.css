@@ -19,14 +19,14 @@ label {
     padding: 5px;
 }
 
-input {
+input {<<<<<<< dixitdj1234/issue8
     display: block;
     padding: 5px;
     margin-bottom: 10px;
     width: 100%;
 }
 
-button {
+button {<<<<<<< dixitdj1234/issue8
     display: block;
     padding: 5px;
 }
@@ -34,7 +34,7 @@ button {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 4fr;
-}
+}<<<<<<< dixitdj1234/issue8
 
 aside {
     background-color: lightgrey;
@@ -84,7 +84,7 @@ main a:hover {
     margin: 25px 0;
     font-size: 0.9em;
     min-width: 400px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;<<<<<<< dixitdj1234/issue8
 }
 
 .content-table thead tr {
@@ -187,6 +187,7 @@ I .content-table tbody tr:last-of-type {
     margin-bottom: 3px;
     padding: 5px 0;
     border-bottom: 1px solid #ccc;
+
 }
 
 .field-label {
@@ -209,7 +210,31 @@ I .content-table tbody tr:last-of-type {
     margin-right: 0;
 }
 
-/* --------------------------- Form ----------------------------- */
+/* ----------------------Dashboard--------------------------- */
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background-color: burlywood;
+    border-radius: 10px;
+}
+
+.card-title {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 10px;
+    min-height: 100px;
+}
+
 
 .form-col-2 {
     display: grid;

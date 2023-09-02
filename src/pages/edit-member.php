@@ -45,7 +45,6 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="gender" id="gender" value="<?= $member['gender'] ?>">
                 <label for="date_of_birth">date_of_birth</label>
                 <input type="text" name="date_of_birth" id="date_of_birth" value="<?= $member['date_of_birth'] ?>">
-               
                 <button name="submit">Submit</button>
             </form>
         </main>

@@ -1,7 +1,7 @@
 
 <?php
 use LMS\src\models\user\user;
-require 'models\User.php';
+require 'models/User.php';
 require './env.php';
 
 
@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
         session_start();
         $_SESSION['user_id'] = $_POST['user_id'];
 
-    header('location:pages/book.php');
+    header('location:pages/dashboard.php');
      } else
     header('location:index.php?status=99');
 }
