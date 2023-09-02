@@ -9,8 +9,7 @@ if (isset($_POST['submit'])) {
     $memberob = new Member();
     $member = $memberob->update($_POST);
 } else {
-    $memberob = new Member();
-    $member = $memberob->details($_GET['member_id']);
+    $member = Member::details($_GET['member_id']);
 }
 ?>
 
@@ -46,7 +45,6 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="gender" id="gender" value="<?= $member['gender'] ?>">
                 <label for="date_of_birth">date_of_birth</label>
                 <input type="text" name="date_of_birth" id="date_of_birth" value="<?= $member['date_of_birth'] ?>">
-                <label for="publication">Publication</label>
                 <button name="submit">Submit</button>
             </form>
         </main>
