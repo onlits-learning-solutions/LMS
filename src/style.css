@@ -19,14 +19,14 @@ label {
     padding: 5px;
 }
 
-input {<<<<<<< dixitdj1234/issue8
+input {
     display: block;
     padding: 5px;
     margin-bottom: 10px;
     width: 100%;
 }
 
-button {<<<<<<< dixitdj1234/issue8
+button {
     display: block;
     padding: 5px;
 }
@@ -34,7 +34,7 @@ button {<<<<<<< dixitdj1234/issue8
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 4fr;
-}<<<<<<< dixitdj1234/issue8
+}
 
 aside {
     background-color: lightgrey;
@@ -84,7 +84,7 @@ main a:hover {
     margin: 25px 0;
     font-size: 0.9em;
     min-width: 400px;
-    border-radius: 5px 5px 0 0;<<<<<<< dixitdj1234/issue8
+    border-radius: 5px 5px 0 0;
 }
 
 .content-table thead tr {
