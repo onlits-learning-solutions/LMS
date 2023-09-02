@@ -17,7 +17,7 @@ class Member {
         $this->connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     }
     public static function index()
-    {•
+    {
 
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM member";
