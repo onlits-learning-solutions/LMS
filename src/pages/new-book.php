@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
                 <h1>ADD New Book</h1>
                 <form action="" method="post">
                     <label for="id">ID</label>
-                    <input type="text" placeholder="Enter Id of Book" required name="id" id="id">
+                    <input type="text" placeholder="Enter Id of Book" required name="id" id="id" value="<?= Book::getBookId();?>">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title">
                     <label for="edition">Edition Name</label>
