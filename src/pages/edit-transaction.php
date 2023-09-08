@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     $transaction = $transactionob->update($_POST);
 } else {
     $transaction = Transaction::details($_GET['transaction_id']);
+    
 }
 ?>
 
@@ -35,25 +36,25 @@ if (isset($_POST['submit'])) {
                 <?php require 'sidebar.php' ?>
             </aside>
         <main>
-            <h1>Edit Member</h1>
+            <h1>Edit Transaction</h1>
             <form action="" method="post">
-                <label for="transaction_id">transaction_id</label>
+                <label for="transaction_id">Transaction ID</label>
                 <input type="text" name="transaction_id" id="transaction_id" readonly value="<?= $transaction['transaction_id'] ?>">
-                <label for="date">date</label>
+                <label for="date">Date</label>
                 <input type="text" name="date" id="date" value="<?= $transaction['date'] ?>">
-                <label for="time">time</label>
+                <label for="time">Time</label>
                 <input type="text" name="time" id="time" value="<?= $transaction['time'] ?>">
-                <label for="date_of_birth">date_of_birth</label>
-                <input type="text" name="date_of_birth" id="date_of_birth" value="<?= $transaction['date_of_birth'] ?>">
-                <label for="book_id">book_id</label>
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="text" name="date_of_birth" id="date_of_birth" value="<?= $member['date_of_birth'] ?>">
+                <label for="book_id">Book ID</label>
                 <input type="text" name="book_id" id="book_id" value="<?= $transaction['book_id'] ?>">
-                <label for="member_id">member_id</label>
+                <label for="member_id">Member ID</label>
                 <input type="text" name="member_id" id="member_id" value="<?= $transaction['member_id'] ?>">
-                <label for="return_by_date">return_by_date</label>
+                <label for="return_by_date">Return by Date</label>
                 <input type="text" name="return_by_date" id="return_by_date" value="<?= $transaction['return_by_date'] ?>">
-                <label for="actual_return_date">actual_return_date</label>
+                <label for="actual_return_date">Actual Return Date</label>
                 <input type="text" name="actual_return_date" id="actual_return_date" value="<?= $transaction['actual_return_date'] ?>">
-                <label for="fine">fine</label>
+                <label for="fine">Fine</label>
                 <input type="text" name="fine" id="fine" value="<?= $transaction['fine'] ?>">
                
                 <button name="submit">Submit</button>

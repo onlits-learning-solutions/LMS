@@ -33,14 +33,14 @@ $transactions = Transaction::index();
                     <table class='content-table'>
                         <thead>
                             <tr>
-                                <th>transaction_id</th>
-                                <th>date</th>
-                                <th>time</th>
-                                <th>book_id</th>
-                                <th>member_id</th>
-                                <th>return_by_date</th>
-                                <th>actual_return_date</th>
-                                <th>fine</th>
+                                <th>Transaction Id</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Book Id</th>
+                                <th>Member Id</th>
+                                <th>Return by Date</th>
+                                <th>Actual Return Date</th>
+                                <th>Fine</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>

@@ -64,11 +64,11 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                             <input type="text" name="publication" id="publication" value="<?php if (isset($book['publication'])) {
                                 echo $book['publication'];
                             } ?>" readonly>
-                            <label for="isbn10">isbn10</label>
+                            <label for="isbn10">ISBN10</label>
                             <input type="text" name="isbn10" id="isbn10" value="<?php if (isset($book['isbn10'])) {
                                 echo $book['isbn10'];
                             } ?>" readonly>
-                            <label for="isbn13">isbn13</label>
+                            <label for="isbn13">ISBN13</label>
                             <input type="text" name="isbn13" id="isbn13" value="<?php if (isset($book['isbn10'])) {
                                 echo $book['isbn13'];
                             } ?>" readonly>

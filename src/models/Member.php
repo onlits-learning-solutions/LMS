@@ -42,6 +42,7 @@ class Member {
 
     public function save()
     {
+        
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
          $sql = "INSERT INTO member(member_id, name, gender, date_of_birth) VALUES('$this->member_id', '$this->name','$this->gender','$this->date_of_birth')";
          $connection->query($sql);
