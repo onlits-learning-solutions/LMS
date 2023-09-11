@@ -37,13 +37,13 @@ if (isset($_POST['submit'])) {
         <main>
             <h1>Edit Member</h1>
             <form action="" method="post">
-                <label for="member_id">member_id</label>
+                <label for="member_id">Member Id</label>
                 <input type="text" name="member_id" id="member_id" readonly value="<?= $member['member_id'] ?>">
-                <label for="name">name</label>
+                <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="<?= $member['name'] ?>">
-                <label for="gender">gender</label>
+                <label for="gender">Gender</label>
                 <input type="text" name="gender" id="gender" value="<?= $member['gender'] ?>">
-                <label for="date_of_birth">date_of_birth</label>
+                <label for="date_of_birth">Date of Birth</label>
                 <input type="text" name="date_of_birth" id="date_of_birth" value="<?= $member['date_of_birth'] ?>">
                 <button name="submit">Submit</button>
             </form>

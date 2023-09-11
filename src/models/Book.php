@@ -117,4 +117,13 @@ class Book
         $result = $connection->query($sql);
         return $result->fetch_array();
     }
+
+	/**
+	 * @param mysqli $connection 
+	 * @return self
+	 */
+	public function setConnection(mysqli $connection): self {
+		$this->connection = $connection;
+		return $this;
+	}
 }

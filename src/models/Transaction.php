@@ -18,7 +18,7 @@ class Transaction
 
     private mysqli $connection;
 
-    public function __construct(array $transaction)
+    public function __construct( $transaction)
     {
         $this->date = date("Y-m-d");
         $this->time = date("h:i:s");
@@ -78,7 +78,7 @@ class Transaction
 
      public function delete(int $transaction_id)
      {
-         $sql = "DELETE FROM member WHERE member_id=$transaction_id";
+         $sql = "DELETE FROM transaction WHERE transaction_id=$transaction_id";
          $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
          $connection->query($sql);
          header("location:transaction.php");

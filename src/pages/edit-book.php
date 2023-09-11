@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         <main>
             <h1>Edit Book</h1>
             <form action="" method="post">
-                <label for="id">Id</label>
+                <label for="id">ID</label>
                 <input type="text" name="id" id="id" readonly value="<?= $book['id'] ?>">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" value="<?= $book['title'] ?>">
@@ -48,9 +48,9 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="author" id="author" value="<?= $book['author'] ?>">
                 <label for="publication">Publication</label>
                 <input type="text" name="publication" id="publication" value="<?= $book['publication'] ?>">
-                <label for="isbn10">isbn10</label>
+                <label for="isbn10">ISBN10</label>
                 <input type="text" name="isbn10" id="isbn10" value="<?= $book['isbn10'] ?>">
-               <label for="isbn13">isbn13</label>
+               <label for="isbn13">ISBN13</label>
                 <input type="text" name="isbn13" id="isbn13" value="<?= $book['isbn13'] ?>">
                  <label for="pages">Pages</label>
                 <input type="text" name="pages" id="pages" value="<?= $book['pages'] ?>">

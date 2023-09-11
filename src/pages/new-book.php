@@ -36,21 +36,21 @@ if (isset($_POST['submit'])) {
                     <label for="id">ID</label>
                     <input type="text" placeholder="Enter Id of Book" required name="id" id="id" value="<?= Book::getBookId();?>">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title">
+                    <input type="text" name="title" id="title" placeholder="Enter Book Title">
                     <label for="edition">Edition Name</label>
-                    <input type="text" name="edition" id="edition">
+                    <input type="text" name="edition" id="edition" placeholder="Enter edtion of Book">
                     <label for="author">Author</label>
-                    <input type="text" name="author" id="author">
+                    <input type="text" name="author" id="author" placeholder="Enter Book Author Name">
                     <label for="publication">Publication</label>
-                    <input type="text" name="publication" id="publication">
-                    <label for="isbn10">isbn10</label>
-                    <input type="text" name="isbn10" id="1sbn10">
-                    <label for="isbn13">isbn13</label>
-                    <input type="text" name="isbn13" id="isbn13">
+                    <input type="text" name="publication" id="publication" placeholder="Enter Publication of Book">
+                    <label for="isbn10">ISBN10</label>
+                    <input type="text" name="isbn10" id="1sbn10" placeholder="Enter 10 Digit ISBN10 Number">
+                    <label for="isbn13">ISBN13</label>
+                    <input type="text" name="isbn13" id="isbn13" placeholder="Enter 13 Digit ISBN13 Number">
                     <label for="pages">Pages</label>
-                    <input type="text" name="pages" id="pages">
+                    <input type="text" name="pages" id="pages" placeholder="Enter Page Count of Book">
                     <label for="price">Price</label>
-                    <input type="text" name="price" id="price">
+                    <input type="text" name="price" id="price" placeholder="Enter Price of Book">
 
                     <button name="submit">Submit</button>
                 </form>
