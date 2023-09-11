@@ -2,6 +2,7 @@
 
 namespace LMS\src\models;
 
+use LMS\models\DatabaseContext;
 use mysqli;
 
 class Book
@@ -18,13 +19,40 @@ class Book
 
     private mysqli $connection;
 
-    public function __construct()
+    public function __construct(array $book)
     {
         
-        $this->connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $this->id = $book['id'];
+        $this->title = $book['title'];
+        $this->edition = $book['edition'];;
+        $this->author = $book['author'];
+        $this->publication = $book['publication'];;
+        $this->isbn10 = $book['isbn10'];
+        $this->isbn13 = $book['isbn13'];;
+        $this->pages = $book['pages'];
+        $this->price = $book['price'];
     }
 
-    public static function index()
+    public static function getBookId(): string
+    {
+        $connection = DatabaseContext::getConnection();
+        $sql = "SELECT id FROM book ORDER BY id DESC LIMIT 1";
+        $result = $connection->query($sql);
+        if($result->num_rows > 0)
+        {
+            $row = $result->fetch_row();
+            $book_id = substr($row[0], 1, 4);
+            $book_id++;
+            if($book_id < 10)
+                return "B000$book_id";
+            elseif($book_id < 100)
+                return "B00$book_id";
+        } else {
+            return "B0001";
+        }
+    }
+
+    public static function index(): array
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM book";
@@ -49,6 +77,7 @@ class Book
     public function save()
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        // $book_id = Book::getBookId();
         $sql = "INSERT INTO book(id, title, edition, author, publication, isbn10, isbn13, pages, price) VALUES('$this->id', '$this->title','$this->edition','$this->author','$this->publication','$this->isbn10','$this->isbn13','$this->pages','$this->price')";
         $connection->query($sql);
         header("location:book.php");
@@ -68,7 +97,7 @@ class Book
         $price = $book['price'];
 
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-        $sql = "UPDATE book SET id='$id', title='$title', edition='$edition', author='$author' , publication='$publication', isbn10='$isbn10', isbn13='$isbn13', pages='$pages', price='$price' WHERE id=$id";
+        $sql = "UPDATE book SET title='$title', edition='$edition', author='$author' , publication='$publication', isbn10='$isbn10', isbn13='$isbn13', pages='$pages', price='$price' WHERE id='$id";
         $connection->query($sql);
         header('location:book.php');
     }
@@ -88,4 +117,13 @@ class Book
         $result = $connection->query($sql);
         return $result->fetch_array();
     }
+
+	/**
+	 * @param mysqli $connection 
+	 * @return self
+	 */
+	public function setConnection(mysqli $connection): self {
+		$this->connection = $connection;
+		return $this;
+	}
 }

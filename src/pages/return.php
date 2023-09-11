@@ -2,6 +2,7 @@
 
 use LMS\src\models\Book;
 use LMS\models\Member;
+
 use LMS\src\models\Transaction;
 
 require '../autoload.php';
@@ -13,7 +14,6 @@ if (isset($_POST['submit'])) {
 
 // ----------- Return By Date --------
 $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval_create_from_date_string("15 days")), "Y-m-d");
-
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,7 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Return</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -36,11 +37,13 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
             <aside class="sidenav">
                 <?php require 'sidebar.php' ?>
             </aside>
+
             <main>
                 <h1>Return book</h1>
 
 
                 <div class="form-col-2">
+
                     <div class="left-col">
                         <form action="" method="post">
                             <input type="hidden" name="book_key" value="">
@@ -144,6 +147,7 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
             xhr.send();
         }
     </script>
+
 </body>
 
 </html>

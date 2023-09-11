@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     $transaction = $transactionob->update($_POST);
 } else {
     $transaction = Transaction::details($_GET['transaction_id']);
+    
 }
 
 $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval_create_from_date_string("15 days")), "Y-m-d");

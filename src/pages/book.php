@@ -38,8 +38,8 @@ $books = Book::index();
                                 <th>Edition</th>
                                 <th>Author</th>
                                 <th>Publication</th>
-                                <th>Isbn10</th>
-                                <th>Isbn13</th>
+                                <th>ISBN10</th>
+                                <th>ISBN13</th>
                                 <th>Pages</th>
                                 <th>Price</th>
                                 <th></th>
