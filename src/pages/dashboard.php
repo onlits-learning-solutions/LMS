@@ -1,3 +1,19 @@
+<?php
+
+use LMS\src\models\Book;
+use LMS\models\Member;
+use LMS\src\models\Transaction;
+
+require '../autoload.php';
+
+
+$count = Book::count_book();
+$countm = Member::count_member();
+$countt = Transaction::count_transaction();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +42,34 @@
                     <div class="card-container">
                         <div class="card">
                             <div class="card-title">
+                            <img src="../pages/images/bookshelf.png">   
+                                <p>Total Books</p>
+                            </div>
+                            <div class="card-body">
+                                <p><?= $count[0] ?></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                            <img src="../pages/images/team.png">
+                                <p>Members</p>
+                            </div>
+                            <div class="card-body">
+                            <p><?= $countm[0] ?></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                            <img src="../pages/images/swear.png">
+                                <p>Book Issued</p>
+                            </div>
+                            <div class="card-body">
+                            <p><?= $countt[0] ?></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                            <img src="../pages/images/available.png">
                                 <p>Avilable Books</p>
                             </div>
                             <div class="card-body">
@@ -34,15 +78,8 @@
                         </div>
                         <div class="card">
                             <div class="card-title">
-                                <p>Books</p>
-                            </div>
-                            <div class="card-body">
-                                <p>10</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-title">
-                                <p>Books</p>
+                            <img src="../pages/images/overdue.png">
+                                <p>Overdue Books</p>
                             </div>
                             <div class="card-body">
                                 <p>10</p>

@@ -70,9 +70,9 @@ class Member {
          header("location:member.php");
      }
 
-     public function count_member()
+     public static function count_member()
      {
-         $sql = "SELECT COUNT(id) FROM member";
+         $sql = "SELECT COUNT(member_id) FROM member";
          $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
          $result = $connection->query($sql);
          return $result->fetch_array();
