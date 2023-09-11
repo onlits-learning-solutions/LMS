@@ -37,10 +37,12 @@ if(isset($_GET['status'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="grid-2">
+    <div class="background"><img src="./pages/images/lms.jpg" alt="background-img"></div>
+    
+    <div class="grid2">
           <div class="left-col">
           </div>
-          <div class="right-col">
+          <div class="">
 <div id="login-form">
 <h1>Library Management Login</h1>
           <form action="" method="post">
@@ -65,6 +67,7 @@ if(isset($_GET['status'])) {
 
 
     </div>
+    
     
 </body>
 </html>

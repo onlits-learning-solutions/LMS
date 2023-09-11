@@ -83,5 +83,11 @@ class Transaction
          $connection->query($sql);
          header("location:transaction.php");
      }
-    
+     public static function count_transaction()
+     {
+         $sql = "SELECT COUNT(transaction_id) FROM transaction WHERE actual_return_date IS NULL";
+         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+         $result = $connection->query($sql);
+         return $result->fetch_array();
+     }
 }

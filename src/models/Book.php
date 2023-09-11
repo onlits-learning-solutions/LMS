@@ -81,7 +81,7 @@ class Book
         header("location:book.php");
     }
 
-    public function count_book()
+    public static function count_book()
     {
         $sql = "SELECT COUNT(id) FROM book";
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
