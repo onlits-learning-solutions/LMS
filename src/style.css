@@ -3,6 +3,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h1{
+    margin-left: 0%;
+    text-align: center;
+    margin-top: auto;
+}
+
 .logo img {
 
     height: 65px;

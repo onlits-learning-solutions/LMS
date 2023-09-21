@@ -29,6 +29,7 @@ $members = Member::index();
             </aside>
             <main class="main">
                     <main class="grid-2">
+                        <h1>Members</h1>
                         <a href="new-member.php">Add New Member</a>
                         <table class='content-table'>
                             <thead>

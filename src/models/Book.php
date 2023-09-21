@@ -52,7 +52,7 @@ class Book
         }
     }
 
-    public static function index(): array
+    public static function index(): array|null
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $sql = "SELECT * FROM book";
@@ -63,10 +63,10 @@ class Book
             return null;
     }
 
-    public static function details(int $id)
+    public static function details(string $id): array|null
     {
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-        $sql = "SELECT * FROM book  WHERE id=$id ";
+        $sql = "SELECT * FROM book  WHERE id='$id'";
         $result = $connection->query($sql);
         if ($result->num_rows > 0)
             return $result->fetch_assoc();
@@ -84,7 +84,7 @@ class Book
     }
 
 
-    public static function update($book)
+    public static function update(array $book): void
     {
         $id = $book['id'];
         $title = $book['title'];
@@ -97,14 +97,14 @@ class Book
         $price = $book['price'];
 
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-        $sql = "UPDATE book SET title='$title', edition='$edition', author='$author' , publication='$publication', isbn10='$isbn10', isbn13='$isbn13', pages='$pages', price='$price' WHERE id='$id";
+        $sql = "UPDATE book SET title='$title', edition='$edition', author='$author' , publication='$publication', isbn10='$isbn10', isbn13='$isbn13', pages='$pages', price='$price' WHERE id='$id'";
         $connection->query($sql);
         header('location:book.php');
     }
 
-    public function delete(int $id)
+    public static function delete(string $id): void
     {
-        $sql = "DELETE FROM book WHERE id=$id";
+        $sql = "DELETE FROM book WHERE id='$id'";
         $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
         $connection->query($sql);
         header("location:book.php");
@@ -117,11 +117,6 @@ class Book
         $result = $connection->query($sql);
         return $result->fetch_array();
     }
-
-	/**
-	 * @param mysqli $connection 
-	 * @return self
-	 */
 	public function setConnection(mysqli $connection): self {
 		$this->connection = $connection;
 		return $this;

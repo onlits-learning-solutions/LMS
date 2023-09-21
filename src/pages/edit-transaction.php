@@ -1,18 +1,23 @@
 <?php
 
+use LMS\src\models\Book;
+use LMS\models\Member;
+
 use LMS\src\models\Transaction;
 
 require '../autoload.php';
 
-
 if (isset($_POST['submit'])) {
-    $transactionob = new Transaction();
-    $transaction = $transactionob->update($_POST);
-} else {
-    $transaction = Transaction::details($_GET['transaction_id']);
     
+    Transaction::update($_POST);
 }
 
+
+$transaction_id = $_GET['transaction_id'];
+$transaction = Transaction::details($transaction_id);
+$book = Book::details($transaction['book_id']);
+$member = Member::details($transaction['member_id']);
+// ----------- Return By Date --------
 $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval_create_from_date_string("15 days")), "Y-m-d");
 ?>
 
@@ -22,10 +27,10 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Member</title>
+
+    <title>Return</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-
 </head>
 
 <body>
@@ -37,18 +42,20 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
             <aside class="sidenav">
                 <?php require 'sidebar.php' ?>
             </aside>
+
             <main>
-                <h1>New Transaction</h1>
+                <h1>Edit Transaction</h1>
 
 
                 <div class="form-col-2">
+
                     <div class="left-col">
                         <form action="" method="post">
                             <input type="hidden" name="book_key" value="">
                             <label for="book_id">Book id</label>
                             <input type="text" name="book_id" id="book_id" onblur="fetchBook(this.value)" value="<?php if (isset($book['id'])) {
                                 echo $book['id'];
-                            } ?>" required>
+                            } ?>">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" value="<?php if (isset($book['title'])) {
                                 echo $book['title'];
@@ -73,22 +80,6 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                             <input type="text" name="isbn13" id="isbn13" value="<?php if (isset($book['isbn10'])) {
                                 echo $book['isbn13'];
                             } ?>" readonly>
-                            <label for="transaction_id">transaction_id</label>
-                            <input type="text" name="transaction_id" id="transaction_id" readonly
-                                value="<?= $transaction['transaction_id'] ?>">
-                            <label for="date">date</label>
-                            <input type="text" name="date" id="date" value="<?= $transaction['date'] ?>">
-                            <label for="time">time</label>
-                            <input type="text" name="time" id="time" value="<?= $transaction['time'] ?>">
-
-                            <label for="return_by_date">return_by_date</label>
-                            <input type="text" name="return_by_date" id="return_by_date"
-                                value="<?= $transaction['return_by_date'] ?>">
-                            <label for="actual_return_date">actual_return_date</label>
-                            <input type="text" name="actual_return_date" id="actual_return_date"
-                                value="<?= $transaction['actual_return_date'] ?>">
-                            <label for="fine">fine</label>
-                            <input type="text" name="fine" id="fine" value="<?= $transaction['fine'] ?>">
 
                     </div>
                     <div class="right-col" name="member" method="post">
@@ -114,6 +105,18 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
 
                     </div>
                 </div>
+                <label for="transaction_id">Transaction Id</label>
+                <input type="text" name="transaction_id" id="transaction_id"
+                    value="<?= $transaction['transaction_id'] ?>">
+                <label for="date">Date</label>
+                <input type="text" name="date" id="date" value="<?= $transaction['date'] ?>">
+                <label for="time">Time</label>
+                <input type="text" name="time" id="time" value="<?= $transaction['time'] ?>">
+                <label for="actual_return_date">Actual Return Date</label>
+                <input type="text" name="actual_return_date" id="actual_return_date"
+                    value="<?= $transaction['actual_return_date'] ?>">
+                <label for="fine">Fine</label>
+                <input type="text" name="fine" id="fine" value="<?= $transaction['fine'] ?>">
                 <label for="return_by_date">Return By date</label>
                 <input type="text" name="return_by_date" id="return_by_date" value="<?= $return_by_date ?>">
                 <button name="submit">Submit</button>
@@ -161,6 +164,7 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
             xhr.send();
         }
     </script>
+
 </body>
 
 </html>

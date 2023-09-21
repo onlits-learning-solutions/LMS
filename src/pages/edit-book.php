@@ -6,8 +6,7 @@ require '../autoload.php';
 
 
 if (isset($_POST['submit'])) {
-    $bookob = new Book();
-    $book = $bookob->update($_POST);
+    Book::update($_POST);
 } else {
     $book = Book::details($_GET['id']);
 }

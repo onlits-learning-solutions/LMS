@@ -8,12 +8,33 @@ use LMS\src\models\Transaction;
 require '../autoload.php';
 
 if (isset($_POST['submit'])) {
-    $transaction = new Transaction($_POST);
-    $transaction->save();
+    Transaction::return($_POST);
 }
+
+
+$transaction_id = $_GET['transaction_id'];
+$transaction = Transaction::details($transaction_id);
+$book = Book::details($transaction['book_id']);
+$member = Member::details($transaction['member_id']);
 
 // ----------- Return By Date --------
 $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval_create_from_date_string("15 days")), "Y-m-d");
+$actual_return_date = date("Y-m-d");
+
+$actual_return_date = "$actual_return_date";
+$return_by_date = "$return_by_date";
+if (strtotime($actual_return_date) <= strtotime($return_by_date)) {
+    $fine = 0;
+} else {
+
+    $date1 = new DateTime($return_by_date);
+    $date2 = new DateTime($actual_return_date);
+    $interval = $date1->diff($date2);
+    $days_difference = $interval->days;
+    $fine = $days_difference * 2;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +67,13 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
 
                     <div class="left-col">
                         <form action="" method="post">
-                            <input type="hidden" name="book_key" value="">
+                            <label for="transaction_id">Transaction Id</label>
+                            <input type="text" name="transaction_id" id="transaction_id" value="<?php if (isset($transaction['transaction_id'])) {
+                                echo $transaction['transaction_id'];
+                            } ?>" readonly>
                             <label for="book_id">Book id</label>
-                            <input type="text" name="book_id" id="book_id" onblur="fetchBook(this.value)" value="<?php if (isset($book['id'])) {
-                                echo $book['id'];
-                            } ?>" required>
+                            <input type="text" name="book_id" id="book_id"
+                                value="<?= isset($book['id']) ? $book['id'] : null ?>" readonly>
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" value="<?php if (isset($book['title'])) {
                                 echo $book['title'];
@@ -77,7 +100,7 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                             } ?>" readonly>
 
                     </div>
-                    <div class="right-col" name="member" method="post">
+                    <div class="right-col" name="member">
 
                         <input type="hidden" name="member_key" value="">
 
@@ -102,7 +125,16 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                 </div>
                 <label for="return_by_date">Return By date</label>
                 <input type="text" name="return_by_date" id="return_by_date" value="<?= $return_by_date ?>">
-                <button name="submit">Submit</button>
+                <label for="actual_return_date">Actual Return date</label>
+                <input type="text" name="actual_return_date" id="actual_return_date" value="<?= $actual_return_date ?>">
+                <label for="fine">Fine</label>
+                <input type="text" name="fine" id="fine" value="<?= $fine ?>">
+
+
+
+                <button name="submit">Submit </button>
+
+
                 </form>
             </main>
         </div>
@@ -113,41 +145,6 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
     <footer class="footer">
         <?php require 'footer.php' ?>
     </footer>
-
-    <script>
-        function fetchBook(bookId) {
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    let book = JSON.parse(this.responseText);
-                    document.getElementById('title').value = book.title;
-                    document.getElementById('edition').value = book.edition;
-                    document.getElementById('author').value = book.author;
-                    document.getElementById('publication').value = book.publication;
-                    document.getElementById('isbn10').value = book.isbn10;
-                    document.getElementById('isbn13').value = book.isbn13;
-                }
-            };
-            xhr.open("GET", "fetch.php?type=book&id=" + bookId);
-            xhr.send();
-        }
-
-        function fetchMember(memberId) {
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    let member = JSON.parse(this.responseText);
-                    document.getElementById('name').value = member.name;
-                    document.getElementById('gender').value = member.gender;
-                    document.getElementById('date_of_birth').value = member.date_of_birth;
-                    
-                }
-            };
-            xhr.open("GET", "fetch.php?type=member&id=" + memberId);
-            xhr.send();
-        }
-    </script>
-
 </body>
 
 </html>
