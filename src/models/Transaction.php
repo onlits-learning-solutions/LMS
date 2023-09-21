@@ -15,6 +15,7 @@ class Transaction
     private string $actual_return_date;
     private string $fine;
     
+    
 
     private mysqli $connection;
 
@@ -25,6 +26,10 @@ class Transaction
         $this->book_id = $transaction['book_id'];
         $this->member_id = $transaction['member_id'];
         $this->return_by_date = $transaction['return_by_date'];
+        $this->actual_return_date = $transaction['actual_return_date'];
+        $this->fine = $transaction['fine'];
+        
+        
         
         $this->connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     }
@@ -58,27 +63,42 @@ class Transaction
         header("location:transaction.php");
     }
 
-    public function update($transaction)
+    public static function return(array $transaction) : void
+    {
+        $transaction_id =$transaction['transaction_id'];
+        $fine =$transaction['fine'];
+        $actual_return_date =$transaction['actual_return_date'];
+        
+        
+
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $sql = "UPDATE transaction SET  fine='$fine' , actual_return_date='$actual_return_date'   WHERE transaction_id='$transaction_id'";
+        $connection->query($sql);
+        header('location:transaction.php');
+    }
+
+    
+
+    public static function update(array $transaction) : void
      {
          $transaction_id =$transaction['transaction_id'];
          $date =$transaction['date'];
          $time =$transaction['time'];
-         $date_of_birth =$transaction['date_of_birth'];
          $book_id =$transaction['book_id'];
          $member_id =$transaction['member_id'];
          $return_by_date =$transaction['return_by_date'];
-         $actual_return_date =$transaction['actual_return_date'];
-         $fine =$transaction['fine'];
+         
+         
 
          $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-         $sql = "UPDATE member SET transaction_id='$transaction_id', name='$date', gender='$time', date_of_birth='$date_of_birth' , book_id='$book_id' , member_id='$member_id' , return_by_date='$return_by_date' , actual_return_date='$actual_return_date' , fine='$fine'  WHERE transaction_id=$transaction_id";
+         $sql = "UPDATE transaction SET transaction_id='$transaction_id', date='$date', time='$time', book_id='$book_id' , member_id='$member_id' , return_by_date='$return_by_date'   WHERE transaction_id='$transaction_id'";
          $connection->query($sql);
          header('location:transaction.php');
      }
 
-     public function delete(int $transaction_id)
+     public static function delete(string $transaction_id): void
      {
-         $sql = "DELETE FROM transaction WHERE transaction_id=$transaction_id";
+         $sql = "DELETE FROM transaction WHERE transaction_id='$transaction_id'";
          $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
          $connection->query($sql);
          header("location:transaction.php");

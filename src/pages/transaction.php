@@ -29,7 +29,8 @@ $transactions = Transaction::index();
             </aside>
             <main class="main">
                 <main class="grid-2">
-                    <a href="new-transaction.php">New Transaction</a>
+                    <h1>Transactions</h1>
+                    <a href="new-transaction.php">Issue Book</a>
                     <table class='content-table'>
                         <thead>
                             <tr>
@@ -44,7 +45,7 @@ $transactions = Transaction::index();
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                
+
 
                             </tr>
                         </thead>
@@ -76,11 +77,22 @@ $transactions = Transaction::index();
                                         <?= $transaction['fine'] ?>
                                     </td>
                                     <div class='edit'>
-                                        <td><a href="edit-transaction.php?transaction_id=<?= $transaction['transaction_id'] ?>">Edit</a></td>
-                                        <td><a href="return.php?transaction_id=<?= $transaction['transaction_id'] ?>">Return</a></td>
-                                        <td><a href="delete-transaction.php?transaction_id=<?= $transaction['transaction_id'] ?>">Delete</a></td>
+                                        <td><a
+                                                href="edit-transaction.php?transaction_id=<?= $transaction['transaction_id'] ?>">Edit</a>
+                                        </td>
+                                        <?php
+                                        if ($transaction['actual_return_date']) {
+                                            echo '<td><span style="color: gray;">Return</span></td>';
+                                        } else {
+                                            echo '<td><a href="return.php?transaction_id=' . $transaction['transaction_id'] . '">Return</a></td>';
+                                        }
+                                        ?>
 
-                                       
+                                        <td><a
+                                                href="delete-transaction.php?transaction_id=<?= $transaction['transaction_id'] ?>">Delete</a>
+                                        </td>
+
+
                                     </div>
                                 </tr>
                             </tbody>

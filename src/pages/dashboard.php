@@ -73,7 +73,7 @@ $countt = Transaction::count_transaction();
                                 <p>Avilable Books</p>
                             </div>
                             <div class="card-body">
-                                <p>10</p>
+                                <p>4</p>
                             </div>
                         </div>
                         <div class="card">
@@ -82,18 +82,10 @@ $countt = Transaction::count_transaction();
                                 <p>Overdue Books</p>
                             </div>
                             <div class="card-body">
-                                <p>10</p>
+                                <p>0</p>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-title">
-                                <p>Books</p>
-                            </div>
-                            <div class="card-body">
-                                <p>10</p>
-                            </div>
-                        </div>
-                       
+                    
                         
                         </div>
                     </div>

@@ -28,7 +28,9 @@ $books = Book::index();
                 <?php require 'sidebar.php' ?>
             </aside>
             <main class="main">
+                
                 <main class="grid-2">
+                <h1>BOOKS </h1>
                     <a href="new-book.php">Add New Book</a>
                     <table class='content-table'>
                         <thead>
