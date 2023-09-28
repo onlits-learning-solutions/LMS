@@ -77,4 +77,15 @@ class Member {
          $result = $connection->query($sql);
          return $result->fetch_array();
      }
-}
+     public static function held_book(int $member_id): int
+     {
+        $connection = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+        $sql= "SELECT COUNT(transaction_id) FROM transaction WHERE member_id='$member_id' AND actual_return_date IS NULL";
+        $result = $connection->query($sql);
+        if($result->num_rows >= 0) {
+            $row = $result->fetch_row();
+            return $row[0];
+        }
+        return 0;
+     }
+    }

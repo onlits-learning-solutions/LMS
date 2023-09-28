@@ -7,7 +7,7 @@ require '../autoload.php';
 
 if(isset($_GET['type'])) {
     if($_GET['type'] == 'book') {
-        $book = Book::details($_GET['id']);
+        $book = Book::details(intval($_GET['id']));
         $book = json_encode($book);
         echo $book;
     } else {

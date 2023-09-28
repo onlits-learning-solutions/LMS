@@ -38,7 +38,7 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                 <?php require 'sidebar.php' ?>
             </aside>
             <main>
-                <h1>New Transaction</h1>
+                <h1>Edit Transaction</h1>
 
 
                 <div class="form-col-2">

@@ -3,13 +3,17 @@
 use LMS\src\models\Book;
 use LMS\models\Member;
 use LMS\src\models\Transaction;
-
+$message = "";
 require '../autoload.php';
 
 if (isset($_POST['submit'])) {
     $transaction = new Transaction($_POST);
     $transaction->save();
 }
+
+
+if (isset($_SESSION['message'])) { $message=$_SESSION['message']; } 
+
 
 // ----------- Return By Date --------
 $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval_create_from_date_string("15 days")), "Y-m-d");
@@ -94,11 +98,13 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                         <input type="text" name="date_of_birth" id="date_of_birth" value="<?php if (isset($member['date_of_birth'])) {
                             echo $member['date_of_birth'];
                         } ?>" readonly>
+                        <?php echo $message?>
 
                     </div>
                 </div>
                 <label for="return_by_date">Return By date</label>
                 <input type="text" name="return_by_date" id="return_by_date" value="<?= $return_by_date ?>">
+                
                 <button name="submit">Submit</button>
                 </form>
             </main>
@@ -137,7 +143,7 @@ $return_by_date = date_format(date_add(date_create(date("Y-m-d")), date_interval
                     document.getElementById('name').value = member.name;
                     document.getElementById('gender').value = member.gender;
                     document.getElementById('date_of_birth').value = member.date_of_birth;
-                    
+
                 }
             };
             xhr.open("GET", "fetch.php?type=member&id=" + memberId);
